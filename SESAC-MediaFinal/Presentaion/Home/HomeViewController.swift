@@ -12,11 +12,16 @@ import Kingfisher
 class HomeViewController: UIViewController {
     
     var dataList: [[TVSeries]] = [[], [], []]
+    var targetDetail: TVSeries?
+    var recommandList: [TVSeries] = []
+    var castList: [Cast] = []
     
-     // MARK: - UI Property
+    // MARK: - UI Property
     
     let homeTableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         return tableView
     }()
     
@@ -30,7 +35,7 @@ class HomeViewController: UIViewController {
     }
 }
 
- // MARK: - Networking Method
+// MARK: - Networking Method
 
 extension HomeViewController {
     func getData() {
@@ -69,7 +74,7 @@ extension HomeViewController {
     }
 }
 
- // MARK: - UICollectionView Delegate
+// MARK: - UICollectionView Delegate
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,18 +85,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else { return UICollectionViewCell() }
         
         let item = dataList[collectionView.tag][indexPath.item]
-        
-        // 이미지 설정
-        if let imagePath = item.poster_path,
-           let imageString = URL(string: Endpoint.baseImageURL + imagePath) {
-            print(imagePath)
-            cell.cellImageView.kf.setImage(with: imageString)
-        }
-        
-        // 작품명
-        cell.cellLabel.text = item.name
+        cell.configureSeriesCell(item)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.targetSeries = dataList[collectionView.tag][indexPath.item]
+        present(vc, animated: true)
     }
 }
 
@@ -108,10 +110,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         // 컬렉션 뷰에 Tag 설정
         cell.cellCollectionView.tag = indexPath.row
         
-        // 타이틀
+        // 테이블 뷰 타이틀 설정
         cell.sectionTitle.text = HomeSections(rawValue: indexPath.row)?.title
         
-        // 컬렉션 뷰
+        // 컬렉션 뷰 Delegate 설정
         cell.cellCollectionView.dataSource = self
         cell.cellCollectionView.delegate = self
         cell.cellCollectionView.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
@@ -126,6 +128,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         280
     }
 }
+
+// MARK: - UITableView Configuration Method
 
 extension HomeViewController {
     func configureTableView() {

@@ -9,21 +9,19 @@ import UIKit
 
 class SeriesCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - UI Property
+    // MARK: - UI Properties
     
     let cellImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "person")
         return imageView
     }()
     
     let cellLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.text = "TEST TEST"
         return label
     }()
     
@@ -37,7 +35,24 @@ class SeriesCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+ // MARK: - Cell Configure Method
+
+extension SeriesCollectionViewCell {
+    func configureSeriesCell(_ item: TVSeries) {
+        guard let imagePath = item.poster_path,
+              let urlString = URL(string: Endpoint.baseImageURL + imagePath) else { return }
+        cellImageView.kf.setImage(with: urlString)
+        cellLabel.text = item.name
+    }
     
+    func configureCastCell(_ item: Cast) {
+        guard let imagePath = item.profile_path,
+              let urlString = URL(string: Endpoint.baseImageURL + imagePath) else { return }
+        cellImageView.kf.setImage(with: urlString)
+        cellLabel.text = item.name
+    }
 }
 
 // MARK: - UI Configuration

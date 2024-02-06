@@ -13,7 +13,6 @@ class SeriesTableViewCell: UITableViewCell {
     
     let sectionTitle: UILabel = {
         let label = UILabel()
-        label.text = "Section Title"
         label.font = .boldSystemFont(ofSize: 22)
         label.textColor = .white
         return label
@@ -23,12 +22,14 @@ class SeriesTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         let deviceWidth = UIScreen.main.bounds.width
         let spacing: CGFloat = 10
-        let cellWidth = (deviceWidth - spacing * 3 ) / 2.4
+        let cellWidth = (deviceWidth - spacing * 3 ) / 2.5
         layout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.5)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -50,14 +51,15 @@ extension SeriesTableViewCell {
    func render() {
        contentView.addSubview(sectionTitle)
        sectionTitle.snp.makeConstraints { make in
-           make.top.horizontalEdges.equalTo(contentView)
+           make.top.equalTo(contentView)
+           make.horizontalEdges.equalTo(contentView).inset(8)
            make.height.equalTo(22)
        }
        
        contentView.addSubview(cellCollectionView)
        cellCollectionView.snp.makeConstraints { make in
            make.top.equalTo(sectionTitle.snp.bottom)
-           make.horizontalEdges.equalTo(contentView)
+           make.horizontalEdges.equalTo(contentView).inset(8)
            make.bottom.equalTo(contentView).inset(4)
        }
    }

@@ -45,6 +45,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         items[0].image = UIImage(systemName: "popcorn.fill")
         items[1].image = UIImage(systemName: "person")
         
+        tabBarVC.tabBar.tintColor = .white
+        
         // 기본루트뷰를 탭바컨트롤러로 설정
         window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()

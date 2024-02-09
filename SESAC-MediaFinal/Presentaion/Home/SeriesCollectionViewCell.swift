@@ -42,14 +42,14 @@ class SeriesCollectionViewCell: UICollectionViewCell {
 extension SeriesCollectionViewCell {
     func configureSeriesCell(_ item: TVSeries) {
         guard let imagePath = item.poster_path,
-              let urlString = URL(string: Endpoint.baseImageURL + imagePath) else { return }
+              let urlString = URL(string: TMDBEndpoint.baseImageURL + imagePath) else { return }
         cellImageView.kf.setImage(with: urlString)
         cellLabel.text = item.name
     }
     
     func configureCastCell(_ item: Cast) {
         guard let imagePath = item.profile_path,
-              let urlString = URL(string: Endpoint.baseImageURL + imagePath) else { return }
+              let urlString = URL(string: TMDBEndpoint.baseImageURL + imagePath) else { return }
         cellImageView.kf.setImage(with: urlString)
         cellLabel.text = item.name
     }

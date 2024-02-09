@@ -44,7 +44,7 @@ extension HomeViewController {
         // trend
         group.enter()
         DispatchQueue.global().async {
-            DataManager.shared.fetchData(type: TVSeriesModel.self, api: .trend) { list in
+            TMDBDataManager.shared.fetchData(type: TVSeriesModel.self, api: .trend) { list in
                 self.dataList[HomeSections.trend.rawValue] = list.results
                 group.leave()
             }
@@ -53,7 +53,7 @@ extension HomeViewController {
         // topRated
         group.enter()
         DispatchQueue.global().async {
-            DataManager.shared.fetchData(type: TVSeriesModel.self, api: .topRated) { list in
+            TMDBDataManager.shared.fetchData(type: TVSeriesModel.self, api: .topRated) { list in
                 self.dataList[HomeSections.topRated.rawValue] = list.results
                 group.leave()
             }
@@ -62,7 +62,7 @@ extension HomeViewController {
         // popular
         group.enter()
         DispatchQueue.global().async {
-            DataManager.shared.fetchData(type: TVSeriesModel.self, api: .popular) { list in
+            TMDBDataManager.shared.fetchData(type: TVSeriesModel.self, api: .popular) { list in
                 self.dataList[HomeSections.popular.rawValue] = list.results
                 group.leave()
             }

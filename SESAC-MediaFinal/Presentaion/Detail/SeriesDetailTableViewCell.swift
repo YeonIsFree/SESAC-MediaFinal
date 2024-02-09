@@ -50,7 +50,7 @@ class SeriesDetailTableViewCell: UITableViewCell {
 extension SeriesDetailTableViewCell {
     func configureCell(_ item: TVSeries) {
         guard let backdropImagePath = item.backdrop_path,
-              let urlString = URL(string: Endpoint.baseImageURL + backdropImagePath) else { return }
+              let urlString = URL(string: TMDBEndpoint.baseImageURL + backdropImagePath) else { return }
         seriesBackgroundImageView.kf.setImage(with: urlString, placeholder: UIImage(systemName: "person"))
         seriesTitle.text = item.name
         let overview = (item.overview == "") ? "줄거리를 제공하지 않는 컨텐츠 입니다." : item.overview

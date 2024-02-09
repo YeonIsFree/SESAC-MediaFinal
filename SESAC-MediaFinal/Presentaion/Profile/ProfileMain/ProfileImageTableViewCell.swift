@@ -11,7 +11,7 @@ class ProfileImageTableViewCell: UITableViewCell {
     
     // MARK: - UI Property
     
-    private let profileImageView: UIImageView = {
+    let profileImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.image = UIImage(systemName: "person")
         imageView.backgroundColor = .systemYellow
@@ -20,6 +20,7 @@ class ProfileImageTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         render()
@@ -29,15 +30,21 @@ class ProfileImageTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -
+    // MARK: - UI Configuration Method
     
     private func render() {
         contentView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
-            make.size.equalTo(200)
-            make.center.equalTo(contentView.safeAreaLayoutGuide)
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(50)
+            make.size.equalTo(180)
+            make.centerX.equalTo(contentView.safeAreaLayoutGuide)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(40)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
 }
 

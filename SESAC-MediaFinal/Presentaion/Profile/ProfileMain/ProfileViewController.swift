@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 enum Sections: Int, CaseIterable {
     case image
@@ -34,6 +35,12 @@ final class ProfileViewController: UIViewController {
         2 : "Yeon",
         3 : "안녕하세요!"
     ] {
+        didSet {
+            profileTableView.reloadData()
+        }
+    }
+    
+    var profileImageURLString: String = "" {
         didSet {
             profileTableView.reloadData()
         }
@@ -79,18 +86,26 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 이미지 뷰 셀
+        
         if indexPath.row ==  Sections.image.rawValue {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ProfileImageTableViewCell.identifier,
                 for: indexPath) as? ProfileImageTableViewCell else { return UITableViewCell() }
+            
+            cell.selectionStyle = .none
+            
+            if let imageURL = URL(string: profileImageURLString) {
+                cell.profileImageView.kf.setImage(with: imageURL)
+            }
+            
             return cell
             
-            // 유저 데이터 셀
-        } else {
+        } else { // 유저 데이터 셀
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ProfileTableViewCell.identifier,
                 for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
+            
+            cell.selectionStyle = .none
             
             guard let cellType = Sections(rawValue: indexPath.row) else { return UITableViewCell()}
             
@@ -109,7 +124,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == Sections.image.rawValue {
-            // 이미지 셀 눌렀을 경우 ----> TO BE CONTINUED
+            let vc = SearchImageViewController()
+            
+            vc.imageURLString = profileImageURLString
+            
+            // 수정 화면에서 꺼내온 이미지
+            vc.imageURL = { imageURL in
+                self.profileImageURLString = imageURL
+            }
+        
+            navigationController?.pushViewController(vc, animated: true)
+            
         } else {
             let vc = EditViewController()
             
@@ -131,7 +156,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == Sections.image.rawValue {
-            return 220
+            return 260
         } else {
             return 60
         }

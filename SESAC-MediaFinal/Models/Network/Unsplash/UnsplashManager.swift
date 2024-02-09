@@ -1,18 +1,18 @@
 //
-//  DataManager.swift
+//  UnsplashManager.swift
 //  SESAC-MediaFinal
 //
-//  Created by Seryun Chun on 2024/02/03.
+//  Created by Seryun Chun on 2024/02/09.
 //
 
 import Foundation
 import Alamofire
 
-class DataManager {
+class UnsplashManager {
     
-    static let shared = DataManager()
+    static let shared = UnsplashManager()
     
-    func fetchData<T: Decodable>(type: T.Type, api: Endpoint, completionHandler: @escaping ((T) -> Void)) {
+    func fetchData<T: Decodable>(type: T.Type, api: UnsplashEndpoint, completionHandler: @escaping ((T) -> Void)) {
         AF.request(api.endpoint,
                    method: api.method,
                    headers: api.header)
@@ -25,5 +25,4 @@ class DataManager {
             }
         }
     }
-    
 }

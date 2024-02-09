@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum Endpoint {
+enum TMDBEndpoint {
     case trend
     case topRated
     case popular

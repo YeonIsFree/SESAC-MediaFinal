@@ -44,7 +44,7 @@ extension DetailViewController {
         // recommand
         group.enter()
         DispatchQueue.global().async {
-            DataManager.shared.fetchData(type: TVSeriesModel.self, api: .recommand(id: id)) { list in
+            TMDBDataManager.shared.fetchData(type: TVSeriesModel.self, api: .recommand(id: id)) { list in
                 self.recommandList = list.results
                 group.leave()
             }
@@ -53,7 +53,7 @@ extension DetailViewController {
         // cast
         group.enter()
         DispatchQueue.global().async {
-            DataManager.shared.fetchData(type: CastModel.self, api: .cast(id: id)) { list in
+            TMDBDataManager.shared.fetchData(type: CastModel.self, api: .cast(id: id)) { list in
                 self.castList = list.cast
                 group.leave()
             }

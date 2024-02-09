@@ -17,7 +17,6 @@ class EditViewController: UIViewController {
     
     lazy var textField: UITextField = {
         let textField = UITextField()
-//        textField.placeholder = "수정하실 \(Sections(rawValue: indexPathRow)!)을(를) 입력해주세요"
         textField.tintColor = .white
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 1
@@ -33,13 +32,12 @@ class EditViewController: UIViewController {
         configureNavigation()
         configureTextField()
         render()
-
     }
     
      // MARK: - TextField Configuration
     
     private func configureTextField() {
-        // 화면 이동 시 넘어온 유저 데이터를 이용하여 텍스트필드 채워놓기
+        // 화면 이동 시 넘어온 유저 데이터를 이용하여 텍스트필드 채워 놓기
         textField.text = userData[indexPathRow]
     }
     

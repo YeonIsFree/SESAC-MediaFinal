@@ -9,8 +9,6 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
     
-    
-    
     // MARK: - UI Properties
     
     private let titleLabel: UILabel = {

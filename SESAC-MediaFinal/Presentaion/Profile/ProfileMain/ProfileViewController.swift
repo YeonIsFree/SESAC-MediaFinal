@@ -8,33 +8,11 @@
 import UIKit
 import Kingfisher
 
-enum Sections: Int, CaseIterable {
-    case image
-    case name
-    case nickname
-    case aboutMe
-    
-    var title: String {
-        switch self {
-        case .image:
-            return ""
-        case .name:
-            return "이름"
-        case .nickname:
-            return "닉네임"
-        case .aboutMe:
-            return "소개"
-        }
-    }
-}
-
 final class ProfileViewController: UIViewController {
-    
-    var userData: [Int : String] = [
-        1 : "천세련",
-        2 : "Yeon",
-        3 : "안녕하세요!"
-    ] {
+    var userData: [Int : String] = [1 : "천세련",
+                                    2 : "Yeon",
+                                    3 : "안녕하세요!"] 
+    {
         didSet {
             profileTableView.reloadData()
         }
@@ -62,52 +40,40 @@ final class ProfileViewController: UIViewController {
         configureNavigation()
         render()
     }
-    
-    // MARK: - UI Configuration Method
-    
-    private func configureNavigation() {
-        navigationItem.title = "프로필"
-        navigationController?.navigationBar.tintColor = .white
-    }
-    
-    private func render() {
-        view.addSubview(profileTableView)
-        profileTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
 }
 
 // MARK: - UITableView Delegate
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Sections.allCases.count
+        return ProfileSections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row ==  Sections.image.rawValue {
+        // 1) 프로필 이미지 셀
+        if indexPath.row ==  ProfileSections.image.rawValue {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ProfileImageTableViewCell.identifier,
                 for: indexPath) as? ProfileImageTableViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             
+            // 현재 데이터로 다음 화면 이미지 세팅해두기
             if let imageURL = URL(string: profileImageURLString) {
                 cell.profileImageView.kf.setImage(with: imageURL)
             }
             
             return cell
             
-        } else { // 유저 데이터 셀
+            // 2) 유저 데이터 셀
+        } else {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ProfileTableViewCell.identifier,
                 for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             
-            guard let cellType = Sections(rawValue: indexPath.row) else { return UITableViewCell()}
+            guard let cellType = ProfileSections(rawValue: indexPath.row) else { return UITableViewCell()}
             
             // cell 타이틀 설정
             cell.configureCellTitle(cellType.title)
@@ -115,26 +81,31 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             // 각 행의 textField에 tag 설정
             cell.textField.tag = indexPath.row
             
-            //
-            cell.textField.text = userData[indexPath.row]!
+            // 다음 화면 텍스트필드 미리 채워 놓기
+            if let dataString = userData[indexPath.row] {
+                cell.textField.text = dataString
+            }
             
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == Sections.image.rawValue {
+        // 프로필 이미지 셀
+        if indexPath.row == ProfileSections.image.rawValue {
             let vc = SearchImageViewController()
             
+            // 수정 화면으로 현재 값 전달
             vc.imageURLString = profileImageURLString
             
             // 수정 화면에서 꺼내온 이미지
             vc.imageURL = { imageURL in
                 self.profileImageURLString = imageURL
             }
-        
+            
             navigationController?.pushViewController(vc, animated: true)
             
+            // 유저 데이터 셀
         } else {
             let vc = EditViewController()
             
@@ -155,13 +126,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == Sections.image.rawValue {
+        if indexPath.row == ProfileSections.image.rawValue {
             return 260
         } else {
             return 60
         }
     }
 }
+
+// MARK: - UITableView Configuration Method
 
 extension ProfileViewController {
     private func configureTableView() {
@@ -172,3 +145,18 @@ extension ProfileViewController {
     }
 }
 
+// MARK: - UI Configuration Method
+
+extension ProfileViewController {
+    private func configureNavigation() {
+        navigationItem.title = "프로필"
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
+    private func render() {
+        view.addSubview(profileTableView)
+        profileTableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+}

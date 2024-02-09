@@ -14,7 +14,7 @@ class ProfileImageTableViewCell: UITableViewCell {
     let profileImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.image = UIImage(systemName: "person")
-        imageView.backgroundColor = .systemYellow
+        imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

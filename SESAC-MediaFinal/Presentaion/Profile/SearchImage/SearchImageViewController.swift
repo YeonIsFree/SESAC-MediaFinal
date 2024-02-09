@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchImageViewController: UIViewController {
+final class SearchImageViewController: UIViewController {
     
     var imageURL: ((String) -> Void)?
     var imageURLString: String = ""
@@ -43,9 +43,10 @@ class SearchImageViewController: UIViewController {
         render()
     }
     
-     // MARK: - Configure Image: 이전 화면에서 전달 받은 값
+     // MARK: - Configure Image
     
     private func configureProfileImage() {
+        // 이전 화면에서 전달 받은 값으로 Kingfisher 이미지 세팅해두기
         if let imageUrl = URL(string: imageURLString) {
             searchImageView.kf.setImage(with: imageUrl)
         } else { return }
@@ -78,8 +79,10 @@ extension SearchImageViewController: UISearchBarDelegate {
         
         UnsplashManager.shared.fetchData(type: UnsplashModel.self, api: .search(query: text)) { images in
             
+            // 역 값 전달 준비
             self.imageURL?(images.urls.regular)
             
+            // Kingfisher 이미지 세팅
             if let imageUrl = URL(string: images.urls.regular) {
                 self.searchImageView.kf.setImage(with: imageUrl)
             } else { return }
@@ -90,7 +93,7 @@ extension SearchImageViewController: UISearchBarDelegate {
 }
 
 extension SearchImageViewController {
-    func configureSearchBar() {
+    private func configureSearchBar() {
         searchBar.delegate = self
     }
 }

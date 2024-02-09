@@ -17,8 +17,8 @@
 		8C29E7172B6E702A00C4F121 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8C29E7162B6E702A00C4F121 /* Kingfisher */; };
 		8C29E71A2B6E703400C4F121 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C29E7192B6E703400C4F121 /* SnapKit */; };
 		8C29E71C2B6E703400C4F121 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 8C29E71B2B6E703400C4F121 /* SnapKit-Dynamic */; };
-		8C29E71F2B6E724E00C4F121 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E71E2B6E724E00C4F121 /* Home.swift */; };
-		8C29E7212B6E72CA00C4F121 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E7202B6E72CA00C4F121 /* Detail.swift */; };
+		8C29E71F2B6E724E00C4F121 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E71E2B6E724E00C4F121 /* HomeSection.swift */; };
+		8C29E7212B6E72CA00C4F121 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E7202B6E72CA00C4F121 /* DetailSection.swift */; };
 		8C29E7232B6E737200C4F121 /* SeriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E7222B6E737200C4F121 /* SeriesTableViewCell.swift */; };
 		8C29E7252B6E738F00C4F121 /* Identifiable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E7242B6E738F00C4F121 /* Identifiable+.swift */; };
 		8C29E72C2B6E7BF700C4F121 /* TMDBAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E72B2B6E7BF700C4F121 /* TMDBAPIModels.swift */; };
@@ -37,6 +37,7 @@
 		8C3C29CE2B765D5200A4E00D /* UnsplashImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C29CD2B765D5200A4E00D /* UnsplashImageModel.swift */; };
 		8C3C29D02B765E0C00A4E00D /* UnsplashEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C29CF2B765E0C00A4E00D /* UnsplashEndpoint.swift */; };
 		8C3C29D22B76611A00A4E00D /* UnsplashManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C29D12B76611A00A4E00D /* UnsplashManager.swift */; };
+		8C3C29D72B766FA100A4E00D /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C29D62B766FA100A4E00D /* ProfileSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +49,8 @@
 		8C29E7062B6E6F9700C4F121 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C29E7092B6E6F9700C4F121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C29E70B2B6E6F9700C4F121 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C29E71E2B6E724E00C4F121 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		8C29E7202B6E72CA00C4F121 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		8C29E71E2B6E724E00C4F121 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
+		8C29E7202B6E72CA00C4F121 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		8C29E7222B6E737200C4F121 /* SeriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewCell.swift; sourceTree = "<group>"; };
 		8C29E7242B6E738F00C4F121 /* Identifiable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifiable+.swift"; sourceTree = "<group>"; };
 		8C29E72B2B6E7BF700C4F121 /* TMDBAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIModels.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		8C3C29CD2B765D5200A4E00D /* UnsplashImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageModel.swift; sourceTree = "<group>"; };
 		8C3C29CF2B765E0C00A4E00D /* UnsplashEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpoint.swift; sourceTree = "<group>"; };
 		8C3C29D12B76611A00A4E00D /* UnsplashManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashManager.swift; sourceTree = "<group>"; };
+		8C3C29D62B766FA100A4E00D /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +130,9 @@
 		8C29E71D2B6E722D00C4F121 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				8C29E71E2B6E724E00C4F121 /* Home.swift */,
-				8C29E7202B6E72CA00C4F121 /* Detail.swift */,
+				8C29E71E2B6E724E00C4F121 /* HomeSection.swift */,
+				8C29E7202B6E72CA00C4F121 /* DetailSection.swift */,
+				8C3C29D62B766FA100A4E00D /* ProfileSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C29E7372B6E99D800C4F121 /* DetailViewController.swift in Sources */,
+				8C3C29D72B766FA100A4E00D /* ProfileSection.swift in Sources */,
 				8C3C29CA2B76448000A4E00D /* SearchImageViewController.swift in Sources */,
 				8C3C29CE2B765D5200A4E00D /* UnsplashImageModel.swift in Sources */,
 				8C3C29C32B74B7AA00A4E00D /* Profile.swift in Sources */,
@@ -346,14 +350,14 @@
 				8C29E7342B6E88E900C4F121 /* TMDBDataManager.swift in Sources */,
 				8C29E72E2B6E7C4B00C4F121 /* TMDBEndpoint.swift in Sources */,
 				8C29E7022B6E6F9500C4F121 /* HomeViewController.swift in Sources */,
-				8C29E7212B6E72CA00C4F121 /* Detail.swift in Sources */,
+				8C29E7212B6E72CA00C4F121 /* DetailSection.swift in Sources */,
 				8C29E7302B6E7C7B00C4F121 /* APIKey.swift in Sources */,
 				8C29E6FE2B6E6F9500C4F121 /* AppDelegate.swift in Sources */,
 				8C3C29BA2B749C2600A4E00D /* EditViewController.swift in Sources */,
 				8C29E7322B6E7F4A00C4F121 /* SeriesCollectionViewCell.swift in Sources */,
 				8C3C29B52B748ADB00A4E00D /* ProfileTableViewCell.swift in Sources */,
 				8C29E72C2B6E7BF700C4F121 /* TMDBAPIModels.swift in Sources */,
-				8C29E71F2B6E724E00C4F121 /* Home.swift in Sources */,
+				8C29E71F2B6E724E00C4F121 /* HomeSection.swift in Sources */,
 				8C29E7002B6E6F9500C4F121 /* SceneDelegate.swift in Sources */,
 				8C3C29B72B748F2000A4E00D /* ProfileImageTableViewCell.swift in Sources */,
 				8C3C29B32B74896F00A4E00D /* ProfileViewController.swift in Sources */,

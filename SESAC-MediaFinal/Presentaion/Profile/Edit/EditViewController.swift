@@ -57,7 +57,7 @@ class EditViewController: UIViewController {
                                                            style: .done, target: self,
                                                            action: #selector(saveButtonTapped))
        
-       guard let cellType = Sections(rawValue: indexPathRow) else { return }
+       guard let cellType = ProfileSections(rawValue: indexPathRow) else { return }
        
        navigationItem.title = "\(cellType.title) 수정"
    }

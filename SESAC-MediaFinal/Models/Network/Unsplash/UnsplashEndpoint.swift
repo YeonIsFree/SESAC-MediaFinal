@@ -10,7 +10,6 @@ import Alamofire
 
 enum UnsplashEndpoint {
     case search(query: String)
-//    "https://api.unsplash.com/photos/random?query=book"
     
     var header: HTTPHeaders {
         return ["Authorization" : APIKey.unsplash]
@@ -25,6 +24,5 @@ enum UnsplashEndpoint {
         case .search(let query):
             return URL(string: "https://api.unsplash.com/photos/random?query=\(query)")!
         }
-
     }
 }
